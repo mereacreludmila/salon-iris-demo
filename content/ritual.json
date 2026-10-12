@@ -1,0 +1,12 @@
+{
+  "titlu": "Ritualul Iris",
+  "descriere": "O oră și jumătate dedicată exclusiv părului și scalpului, gândită ca o pauză de la tot restul zilei.",
+  "pret": "320 lei",
+  "durata": "90 de minute",
+  "pasi": [
+    { "nume": "Diagnostic", "descriere": "Analizăm scalpul și firul de păr și alegem produsele." },
+    { "nume": "Curățare și masaj", "descriere": "Spălare în trei etape și masaj relaxant al scalpului." },
+    { "nume": "Tratament intensiv", "descriere": "Mască hrănitoare sub aburi calzi, cât îți bei ceaiul." },
+    { "nume": "Coafare", "descriere": "Uscare și styling, cu recomandări pentru acasă." }
+  ]
+}

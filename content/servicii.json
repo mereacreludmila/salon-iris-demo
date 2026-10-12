@@ -1,0 +1,43 @@
+{
+  "nota_preturi": "Prețurile pornesc de la valorile afișate și se confirmă după consultație, în funcție de lungimea părului și de produse.",
+  "categorii": [
+    {
+      "slug": "coafura",
+      "titlu": "Coafură",
+      "rezumat": "Tuns de precizie, culoare personalizată și coafuri de eveniment.",
+      "intro": "Fiecare programare de coafură începe cu o consultație. Ne uităm la textura părului, la stilul tău de viață și la cât timp vrei să petreci dimineața în fața oglinzii.",
+      "servicii": [
+        { "nume": "Tuns și coafat", "pret": "140 lei", "descriere": "Consultație, spălare, tuns de precizie și coafare." },
+        { "nume": "Balayage", "pret": "de la 550 lei", "descriere": "Culoare pictată manual, cu tratament de protecție inclus." },
+        { "nume": "Culoare completă", "pret": "de la 320 lei", "descriere": "Nuanță personalizată, cu toner și glazurare pentru strălucire." },
+        { "nume": "Coafură de eveniment", "pret": "220 lei", "descriere": "Bucle, coc sau păr prins, cu probă la cerere." },
+        { "nume": "Tratament cu keratină", "pret": "de la 450 lei", "descriere": "Păr neted și disciplinat până la trei luni." },
+        { "nume": "Tuns bărbați", "pret": "90 lei", "descriere": "Tuns cu foarfeca și mașina, spălare și styling." }
+      ]
+    },
+    {
+      "slug": "unghii",
+      "titlu": "Unghii",
+      "rezumat": "Manichiură și pedichiură spa, semipermanent și construcție cu gel.",
+      "intro": "Lucrăm cu instrumente sterilizate după fiecare client și cu produse care nu agresează unghia naturală. Alegi din peste 200 de nuanțe.",
+      "servicii": [
+        { "nume": "Manichiură spa", "pret": "110 lei", "descriere": "Îngrijirea cuticulelor, exfoliere, masaj și lac clasic." },
+        { "nume": "Manichiură semipermanentă", "pret": "150 lei", "descriere": "Rezistă până la trei săptămâni." },
+        { "nume": "Construcție cu gel", "pret": "220 lei", "descriere": "Formă și lungime personalizate, finisaj natural." },
+        { "nume": "Pedichiură spa", "pret": "170 lei", "descriere": "Baie caldă, exfoliere, masaj și semipermanent." }
+      ]
+    },
+    {
+      "slug": "sprancene-gene",
+      "titlu": "Sprâncene și gene",
+      "rezumat": "Arhitectura sprâncenelor, laminare, lifting și extensii de gene.",
+      "intro": "Sprâncenele și genele schimbă tot chipul, așa că lucrăm cu măsurători și în ritmul tău, pentru un rezultat natural.",
+      "servicii": [
+        { "nume": "Arhitectura sprâncenelor", "pret": "90 lei", "descriere": "Măsurare, pensat și formă adaptată trăsăturilor." },
+        { "nume": "Laminare sprâncene", "pret": "180 lei", "descriere": "Sprâncene pline și disciplinate timp de șase săptămâni." },
+        { "nume": "Lifting gene", "pret": "200 lei", "descriere": "Curbură naturală, cu vopsire și tratament hrănitor." },
+        { "nume": "Extensii gene fir cu fir", "pret": "280 lei", "descriere": "Aspect natural, aplicat într-un ritm liniștit." }
+      ]
+    }
+  ]
+}

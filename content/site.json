@@ -1,0 +1,20 @@
+{
+  "nume": "Iris",
+  "descriere": "Salon de coafură și frumusețe. Coafură, culoare, unghii, sprâncene și gene, doar cu programare.",
+  "telefon": "0700 000 000",
+  "telefon_link": "+40700000000",
+  "email": "salut@exemplu.ro",
+  "adresa": ["Str. Exemplului nr. 12", "Orașul Tău"],
+  "link_harta": "https://maps.google.com",
+  "link_programare": "#",
+  "whatsapp": "40700000000",
+  "program": [
+    { "zi": "Luni", "deschis": "09:00", "inchis": "20:00" },
+    { "zi": "Marți", "deschis": "09:00", "inchis": "20:00" },
+    { "zi": "Miercuri", "deschis": "09:00", "inchis": "20:00" },
+    { "zi": "Joi", "deschis": "09:00", "inchis": "20:00" },
+    { "zi": "Vineri", "deschis": "09:00", "inchis": "20:00" },
+    { "zi": "Sâmbătă", "deschis": "09:00", "inchis": "16:00" },
+    { "zi": "Duminică", "deschis": "", "inchis": "" }
+  ]
+}
