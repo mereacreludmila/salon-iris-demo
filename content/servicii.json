@@ -38,7 +38,12 @@
           "descriere": "Tuns cu foarfeca și mașina, spălare și styling."
         }
       ],
-      "foto": "/images/uploads/2392606049021656.jfif"
+      "foto": "/images/uploads/2392606049021656.jfif",
+      "galerie": [
+        "/images/uploads/6122149489277866.jpg",
+        "/images/uploads/211174979727689.jpg",
+        "/images/uploads/6051780745704197.jpg"
+      ]
     },
     {
       "slug": "unghii",
