@@ -9,6 +9,11 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
 site_url: "/"
 display_url: "/"
 
