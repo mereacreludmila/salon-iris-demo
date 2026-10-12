@@ -164,9 +164,6 @@ h2{font-size:clamp(2.3rem,4.4vw,3.8rem);margin:0 0 1.5rem}
 .gallery-section{padding-block:clamp(3.5rem,7vw,5.5rem)}
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1rem}
 .gallery .photo{aspect-ratio:4/5}
-/* în galerie poza se vede întreagă, centrată, fără tăiere */
-.gallery .photo.are-poza{background:var(--noir)}
-.gallery .photo.are-poza img{object-fit:contain}
 @media (max-width:600px){.gallery{gap:.4rem}}
 
 /* ---------- programare ---------- */

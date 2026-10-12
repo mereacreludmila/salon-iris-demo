@@ -228,7 +228,7 @@ servicii.categorii.forEach((c, i) => {
   <div class="wrap">
     <p class="kicker">Lucrări recente</p>
     <div class="gallery">
-      ${(c.galerie && c.galerie.length ? c.galerie : ['', '', '']).slice(0, 3).map((img, j) => foto('Lucrare recentă', ['alt', 'cool', ''][j], img, 'centru')).join('\n      ')}
+      ${(c.galerie && c.galerie.length ? c.galerie : ['', '', '']).slice(0, 3).map((img, j) => foto('Lucrare recentă', ['alt', 'cool', ''][j], typeof img === 'string' ? img : (img && img.imagine) || '', (img && img.pozitie) || 'centru')).join('\n      ')}
     </div>
   </div>
 </section>
