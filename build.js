@@ -17,9 +17,17 @@ const despre = citeste('despre.json');
 const e = (t) => String(t ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // Loc pentru fotografie: dacă există o imagine o afișează, altfel un fundal elegant
-const foto = (eticheta, varianta = '', imagine = '') =>
+// Ce parte a pozei rămâne vizibilă când e decupată (se alege din panou)
+const pozitii = { sus: '50% 15%', centru: '50% 50%', jos: '50% 85%', stanga: '20% 30%', dreapta: '80% 30%' };
+// Pozele trec prin optimizarea automată Netlify: orice format și orice mărime
+// (poze de telefon de câțiva MB, .jfif, .png, .webp) ajung pe site mici și rapide.
+const optim = (img, latime) =>
+  img && img.startsWith('/') ? `/.netlify/images?url=${encodeURIComponent(img)}&w=${latime}&q=78` : img;
+const foto = (eticheta, varianta = '', imagine = '', pozitie = 'sus') =>
   `<figure class="photo ${varianta}" role="img" aria-label="${e(eticheta)}">` +
-  (imagine ? `<img src="${e(imagine)}" alt="${e(eticheta)}" loading="lazy">` : `<figcaption>${e(eticheta)}</figcaption>`) +
+  (imagine
+    ? `<img src="${e(optim(imagine, 1200))}" srcset="${e(optim(imagine, 600))} 600w, ${e(optim(imagine, 1200))} 1200w, ${e(optim(imagine, 1800))} 1800w" sizes="(max-width: 820px) 100vw, 50vw" alt="${e(eticheta)}" loading="lazy" style="object-position:${pozitii[pozitie] || pozitii.sus}">`
+    : `<figcaption>${e(eticheta)}</figcaption>`) +
   `</figure>`;
 
 const meniu = [
@@ -56,7 +64,7 @@ const tabelProgram = () => `
 
 const sectiuneRitual = (cuButon) => `
 <section class="ritual dark">
-  ${foto('Fotografie: masaj al scalpului, lumină caldă', 'alt', ritual.foto)}
+  ${foto('Fotografie: masaj al scalpului, lumină caldă', 'alt', ritual.foto, ritual.foto_pozitie)}
   <div class="ritual-text">
     <p class="kicker">Tratamentul nostru semnătură</p>
     <h2>${e(ritual.titlu)}</h2>
@@ -148,7 +156,7 @@ pagini.push({
   cuProgram: true,
   continut: `
 <section class="hero dark">
-  ${foto('Fotografie: portret editorial, păr lucios', '', acasa.foto_principala)}
+  ${foto('Fotografie: portret editorial, păr lucios', '', acasa.foto_principala, acasa.foto_principala_pozitie)}
   <div class="hero-text">
     <p class="status" id="status"><span class="dot" aria-hidden="true"></span><span id="status-text">Doar cu programare</span></p>
     <h1>${e(acasa.titlu)}</h1>
@@ -170,7 +178,7 @@ pagini.push({
     <h2>Servicii</h2>
     <div class="cards">
       ${servicii.categorii.map((c, i) => `<a class="card" href="/${e(c.slug)}/">
-        ${foto('Fotografie: ' + c.titlu.toLowerCase(), ['', 'cool', 'alt'][i % 3], c.foto)}
+        ${foto('Fotografie: ' + c.titlu.toLowerCase(), ['', 'cool', 'alt'][i % 3], c.foto, c.foto_pozitie)}
         <h3>${e(c.titlu)}</h3>
         <p>${e(c.rezumat)}</p>
         <span class="more">Vezi serviciile și prețurile</span>
@@ -205,7 +213,7 @@ servicii.categorii.forEach((c, i) => {
     <h1>${e(c.titlu)}</h1>
     <p>${e(c.intro)}</p>
   </div>
-  ${foto('Fotografie: ' + c.titlu.toLowerCase(), ['', 'cool', 'alt'][i % 3], c.foto)}
+  ${foto('Fotografie: ' + c.titlu.toLowerCase(), ['', 'cool', 'alt'][i % 3], c.foto, c.foto_pozitie)}
 </section>
 
 <section class="section">
@@ -216,9 +224,12 @@ servicii.categorii.forEach((c, i) => {
   </div>
 </section>
 
-<section class="dark" aria-label="Galerie">
-  <div class="gallery">
-    ${(c.galerie && c.galerie.length ? c.galerie : ['', '', '']).slice(0, 3).map((img, j) => foto('Lucrare recentă', ['alt', 'cool', ''][j], img)).join('\n    ')}
+<section class="dark gallery-section" aria-label="Galerie">
+  <div class="wrap">
+    <p class="kicker">Lucrări recente</p>
+    <div class="gallery">
+      ${(c.galerie && c.galerie.length ? c.galerie : ['', '', '']).slice(0, 3).map((img, j) => foto('Lucrare recentă', ['alt', 'cool', ''][j], img)).join('\n      ')}
+    </div>
   </div>
 </section>
 
@@ -254,7 +265,7 @@ pagini.push({
     <h1>${e(despre.titlu)}</h1>
     <p>${e(acasa.manifest)}</p>
   </div>
-  ${foto('Fotografie: interiorul salonului', 'alt', despre.foto)}
+  ${foto('Fotografie: interiorul salonului', 'alt', despre.foto, despre.foto_pozitie)}
 </section>
 
 <section class="section">
@@ -267,7 +278,7 @@ pagini.push({
   <div class="wrap">
     <h2 style="margin:0">Echipa</h2>
     <div class="team-grid">
-      ${despre.echipa.map((m, i) => `<div class="member">${foto('Portret: ' + m.nume, ['cool', '', 'alt'][i % 3], m.foto)}<h3>${e(m.nume)}</h3><p>${e(m.rol)}</p></div>`).join('\n      ')}
+      ${despre.echipa.map((m, i) => `<div class="member">${foto('Portret: ' + m.nume, ['cool', '', 'alt'][i % 3], m.foto, m.foto_pozitie)}<h3>${e(m.nume)}</h3><p>${e(m.rol)}</p></div>`).join('\n      ')}
     </div>
   </div>
 </section>
