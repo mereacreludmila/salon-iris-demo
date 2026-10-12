@@ -56,7 +56,7 @@ const tabelProgram = () => `
 
 const sectiuneRitual = (cuButon) => `
 <section class="ritual dark">
-  ${foto('Fotografie: masaj al scalpului, lumină caldă', 'alt')}
+  ${foto('Fotografie: masaj al scalpului, lumină caldă', 'alt', ritual.foto)}
   <div class="ritual-text">
     <p class="kicker">Tratamentul nostru semnătură</p>
     <h2>${e(ritual.titlu)}</h2>
@@ -123,6 +123,14 @@ ${continut}
 <a class="wa" href="https://wa.me/${e(site.whatsapp)}" aria-label="Scrie-ne pe WhatsApp" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>
 </a>
+${url === '/' ? `<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on('init', function (user) {
+    if (!user) window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
+  });
+}
+</script>` : ''}
 ${cuProgram ? `<script type="application/json" id="program-data">${JSON.stringify(site.program).replace(/</g, '\\u003c')}</script>` : ''}
 <script src="/assets/script.js"></script>
 </body>
@@ -140,7 +148,7 @@ pagini.push({
   cuProgram: true,
   continut: `
 <section class="hero dark">
-  ${foto('Fotografie: portret editorial, păr lucios')}
+  ${foto('Fotografie: portret editorial, păr lucios', '', acasa.foto_principala)}
   <div class="hero-text">
     <p class="status" id="status"><span class="dot" aria-hidden="true"></span><span id="status-text">Doar cu programare</span></p>
     <h1>${e(acasa.titlu)}</h1>
@@ -162,7 +170,7 @@ pagini.push({
     <h2>Servicii</h2>
     <div class="cards">
       ${servicii.categorii.map((c, i) => `<a class="card" href="/${e(c.slug)}/">
-        ${foto('Fotografie: ' + c.titlu.toLowerCase(), ['', 'cool', 'alt'][i % 3])}
+        ${foto('Fotografie: ' + c.titlu.toLowerCase(), ['', 'cool', 'alt'][i % 3], c.foto)}
         <h3>${e(c.titlu)}</h3>
         <p>${e(c.rezumat)}</p>
         <span class="more">Vezi serviciile și prețurile</span>
@@ -197,7 +205,7 @@ servicii.categorii.forEach((c, i) => {
     <h1>${e(c.titlu)}</h1>
     <p>${e(c.intro)}</p>
   </div>
-  ${foto('Fotografie: ' + c.titlu.toLowerCase(), ['', 'cool', 'alt'][i % 3])}
+  ${foto('Fotografie: ' + c.titlu.toLowerCase(), ['', 'cool', 'alt'][i % 3], c.foto)}
 </section>
 
 <section class="section">
@@ -210,9 +218,7 @@ servicii.categorii.forEach((c, i) => {
 
 <section class="dark" aria-label="Galerie">
   <div class="gallery">
-    ${foto('Lucrare recentă', 'alt')}
-    ${foto('Lucrare recentă', 'cool')}
-    ${foto('Lucrare recentă')}
+    ${(c.galerie && c.galerie.length ? c.galerie : ['', '', '']).slice(0, 3).map((img, j) => foto('Lucrare recentă', ['alt', 'cool', ''][j], img)).join('\n    ')}
   </div>
 </section>
 
@@ -248,7 +254,7 @@ pagini.push({
     <h1>${e(despre.titlu)}</h1>
     <p>${e(acasa.manifest)}</p>
   </div>
-  ${foto('Fotografie: interiorul salonului', 'alt')}
+  ${foto('Fotografie: interiorul salonului', 'alt', despre.foto)}
 </section>
 
 <section class="section">
@@ -261,7 +267,7 @@ pagini.push({
   <div class="wrap">
     <h2 style="margin:0">Echipa</h2>
     <div class="team-grid">
-      ${despre.echipa.map((m, i) => `<div class="member">${foto('Portret: ' + m.nume, ['cool', '', 'alt'][i % 3])}<h3>${e(m.nume)}</h3><p>${e(m.rol)}</p></div>`).join('\n      ')}
+      ${despre.echipa.map((m, i) => `<div class="member">${foto('Portret: ' + m.nume, ['cool', '', 'alt'][i % 3], m.foto)}<h3>${e(m.nume)}</h3><p>${e(m.rol)}</p></div>`).join('\n      ')}
     </div>
   </div>
 </section>
@@ -309,6 +315,9 @@ fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(path.join(dist, 'assets'), { recursive: true });
 fs.copyFileSync(path.join(__dirname, 'src', 'style.css'), path.join(dist, 'assets', 'style.css'));
 fs.copyFileSync(path.join(__dirname, 'src', 'script.js'), path.join(dist, 'assets', 'script.js'));
+// panoul de editare
+fs.cpSync(path.join(__dirname, 'admin'), path.join(dist, 'admin'), { recursive: true });
+// pozele încărcate de client
 if (fs.existsSync(path.join(__dirname, 'images'))) {
   fs.cpSync(path.join(__dirname, 'images'), path.join(dist, 'images'), { recursive: true });
 }

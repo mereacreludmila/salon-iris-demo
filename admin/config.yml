@@ -1,0 +1,132 @@
+# Configurarea panoului de editare.
+# Aici decidem exact ce poate modifica clientul. Structura și designul nu apar aici, deci nu pot fi stricate.
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Unde se salvează pozele încărcate de client
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: "/"
+display_url: "/"
+
+collections:
+  - name: "continut"
+    label: "Conținutul site-ului"
+    editor:
+      preview: false
+    files:
+
+      - name: "servicii"
+        label: "Servicii și prețuri"
+        file: "content/servicii.json"
+        fields:
+          - { label: "Notă despre prețuri", name: "nota_preturi", widget: "text" }
+          - label: "Categorii"
+            name: "categorii"
+            widget: "list"
+            allow_add: false
+            allow_remove: false
+            allow_reorder: false
+            summary: "{{fields.titlu}}"
+            fields:
+              - { label: "Cod pagină", name: "slug", widget: "hidden" }
+              - { label: "Titlu", name: "titlu", widget: "string" }
+              - { label: "Rezumat (apare pe prima pagină)", name: "rezumat", widget: "string" }
+              - { label: "Text de prezentare", name: "intro", widget: "text" }
+              - { label: "Fotografie principală", name: "foto", widget: "image", required: false }
+              - label: "Galerie (maxim 3 poze)"
+                name: "galerie"
+                widget: "list"
+                required: false
+                max: 3
+                field: { label: "Fotografie", name: "imagine", widget: "image" }
+              - label: "Servicii"
+                name: "servicii"
+                widget: "list"
+                label_singular: "serviciu"
+                summary: "{{fields.nume}}, {{fields.pret}}"
+                fields:
+                  - { label: "Nume serviciu", name: "nume", widget: "string" }
+                  - { label: "Preț", name: "pret", widget: "string", hint: "Exemplu: 140 lei sau de la 320 lei" }
+                  - { label: "Descriere scurtă", name: "descriere", widget: "string", required: false }
+
+      - name: "acasa"
+        label: "Prima pagină"
+        file: "content/acasa.json"
+        fields:
+          - { label: "Titlu mare", name: "titlu", widget: "string" }
+          - { label: "Text sub titlu", name: "subtitlu", widget: "text" }
+          - { label: "Fotografie principală", name: "foto_principala", widget: "image", required: false }
+          - { label: "Mesajul salonului", name: "manifest", widget: "text" }
+          - { label: "Semnătura mesajului", name: "manifest_semnatura", widget: "string" }
+          - { label: "Recenzie afișată", name: "recenzie", widget: "text" }
+          - { label: "Autorul recenziei", name: "recenzie_autor", widget: "string" }
+
+      - name: "ritual"
+        label: "Ritualul (tratament semnătură)"
+        file: "content/ritual.json"
+        fields:
+          - { label: "Nume", name: "titlu", widget: "string" }
+          - { label: "Descriere", name: "descriere", widget: "text" }
+          - { label: "Preț", name: "pret", widget: "string" }
+          - { label: "Durată", name: "durata", widget: "string" }
+          - { label: "Fotografie", name: "foto", widget: "image", required: false }
+          - label: "Pași"
+            name: "pasi"
+            widget: "list"
+            label_singular: "pas"
+            summary: "{{fields.nume}}"
+            fields:
+              - { label: "Nume pas", name: "nume", widget: "string" }
+              - { label: "Descriere", name: "descriere", widget: "string" }
+
+      - name: "despre"
+        label: "Despre noi și echipa"
+        file: "content/despre.json"
+        fields:
+          - { label: "Titlu", name: "titlu", widget: "string" }
+          - { label: "Fotografie", name: "foto", widget: "image", required: false }
+          - label: "Paragrafe"
+            name: "paragrafe"
+            widget: "list"
+            field: { label: "Paragraf", name: "paragraf", widget: "text" }
+          - label: "Echipa"
+            name: "echipa"
+            widget: "list"
+            label_singular: "membru"
+            summary: "{{fields.nume}}"
+            fields:
+              - { label: "Nume", name: "nume", widget: "string" }
+              - { label: "Rol", name: "rol", widget: "string" }
+              - { label: "Portret", name: "foto", widget: "image", required: false }
+
+      - name: "site"
+        label: "Contact și program"
+        file: "content/site.json"
+        fields:
+          - { label: "Numele salonului", name: "nume", widget: "string" }
+          - { label: "Descriere scurtă", name: "descriere", widget: "text" }
+          - { label: "Telefon (cum se afișează)", name: "telefon", widget: "string", hint: "Exemplu: 0700 000 000" }
+          - { label: "Telefon pentru apel", name: "telefon_link", widget: "string", hint: "Cu prefixul țării, fără spații. Exemplu: +40700000000" }
+          - { label: "Email", name: "email", widget: "string" }
+          - label: "Adresă"
+            name: "adresa"
+            widget: "list"
+            field: { label: "Rând", name: "rand", widget: "string" }
+          - { label: "Link Google Maps", name: "link_harta", widget: "string" }
+          - { label: "Link programări online", name: "link_programare", widget: "string", hint: "Linkul aplicației de programări. Lasă # dacă nu există încă." }
+          - { label: "Număr WhatsApp", name: "whatsapp", widget: "string", hint: "Doar cifre, cu prefixul țării. Exemplu: 40700000000" }
+          - label: "Program"
+            name: "program"
+            widget: "list"
+            allow_add: false
+            allow_remove: false
+            allow_reorder: false
+            summary: "{{fields.zi}}: {{fields.deschis}}–{{fields.inchis}}"
+            fields:
+              - { label: "Zi", name: "zi", widget: "hidden" }
+              - { label: "Deschide la", name: "deschis", widget: "string", required: false, hint: "Exemplu: 09:00. Lasă gol dacă e închis." }
+              - { label: "Închide la", name: "inchis", widget: "string", required: false }
