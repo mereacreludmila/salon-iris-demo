@@ -37,6 +37,7 @@ collections:
               - { label: "Rezumat (apare pe prima pagină)", name: "rezumat", widget: "string" }
               - { label: "Text de prezentare", name: "intro", widget: "text" }
               - { label: "Fotografie principală", name: "foto", widget: "image", required: false }
+              - { label: "Încadrarea fotografiei", name: "foto_pozitie", widget: "select", default: "sus", options: [{ label: "Sus (fața, capul)", value: "sus" }, { label: "Centru", value: "centru" }, { label: "Jos", value: "jos" }, { label: "Stânga", value: "stanga" }, { label: "Dreapta", value: "dreapta" }], required: false, hint: "Ce parte a pozei rămâne vizibilă dacă poza e decupată." }
               - label: "Galerie (maxim 3 poze)"
                 name: "galerie"
                 widget: "list"
@@ -60,6 +61,7 @@ collections:
           - { label: "Titlu mare", name: "titlu", widget: "string" }
           - { label: "Text sub titlu", name: "subtitlu", widget: "text" }
           - { label: "Fotografie principală", name: "foto_principala", widget: "image", required: false }
+          - { label: "Încadrarea fotografiei", name: "foto_principala_pozitie", widget: "select", default: "sus", options: [{ label: "Sus (fața, capul)", value: "sus" }, { label: "Centru", value: "centru" }, { label: "Jos", value: "jos" }, { label: "Stânga", value: "stanga" }, { label: "Dreapta", value: "dreapta" }], required: false, hint: "Ce parte a pozei rămâne vizibilă dacă poza e decupată." }
           - { label: "Mesajul salonului", name: "manifest", widget: "text" }
           - { label: "Semnătura mesajului", name: "manifest_semnatura", widget: "string" }
           - { label: "Recenzie afișată", name: "recenzie", widget: "text" }
@@ -74,6 +76,7 @@ collections:
           - { label: "Preț", name: "pret", widget: "string" }
           - { label: "Durată", name: "durata", widget: "string" }
           - { label: "Fotografie", name: "foto", widget: "image", required: false }
+          - { label: "Încadrarea fotografiei", name: "foto_pozitie", widget: "select", default: "sus", options: [{ label: "Sus (fața, capul)", value: "sus" }, { label: "Centru", value: "centru" }, { label: "Jos", value: "jos" }, { label: "Stânga", value: "stanga" }, { label: "Dreapta", value: "dreapta" }], required: false, hint: "Ce parte a pozei rămâne vizibilă dacă poza e decupată." }
           - label: "Pași"
             name: "pasi"
             widget: "list"
@@ -89,6 +92,7 @@ collections:
         fields:
           - { label: "Titlu", name: "titlu", widget: "string" }
           - { label: "Fotografie", name: "foto", widget: "image", required: false }
+          - { label: "Încadrarea fotografiei", name: "foto_pozitie", widget: "select", default: "sus", options: [{ label: "Sus (fața, capul)", value: "sus" }, { label: "Centru", value: "centru" }, { label: "Jos", value: "jos" }, { label: "Stânga", value: "stanga" }, { label: "Dreapta", value: "dreapta" }], required: false, hint: "Ce parte a pozei rămâne vizibilă dacă poza e decupată." }
           - label: "Paragrafe"
             name: "paragrafe"
             widget: "list"
@@ -102,6 +106,7 @@ collections:
               - { label: "Nume", name: "nume", widget: "string" }
               - { label: "Rol", name: "rol", widget: "string" }
               - { label: "Portret", name: "foto", widget: "image", required: false }
+              - { label: "Încadrarea portretului", name: "foto_pozitie", widget: "select", default: "sus", options: [{ label: "Sus (fața, capul)", value: "sus" }, { label: "Centru", value: "centru" }, { label: "Jos", value: "jos" }, { label: "Stânga", value: "stanga" }, { label: "Dreapta", value: "dreapta" }], required: false, hint: "Ce parte a pozei rămâne vizibilă dacă poza e decupată." }
 
       - name: "site"
         label: "Contact și program"
