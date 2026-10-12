@@ -24,7 +24,7 @@ const pozitii = { sus: '50% 15%', centru: '50% 50%', jos: '50% 85%', stanga: '20
 const optim = (img, latime) =>
   img && img.startsWith('/') ? `/.netlify/images?url=${encodeURIComponent(img)}&w=${latime}&q=78` : img;
 const foto = (eticheta, varianta = '', imagine = '', pozitie = 'sus') =>
-  `<figure class="photo ${varianta}" role="img" aria-label="${e(eticheta)}">` +
+  `<figure class="photo ${varianta}${imagine ? ' are-poza' : ''}" role="img" aria-label="${e(eticheta)}">` +
   (imagine
     ? `<img src="${e(optim(imagine, 1200))}" srcset="${e(optim(imagine, 600))} 600w, ${e(optim(imagine, 1200))} 1200w, ${e(optim(imagine, 1800))} 1800w" sizes="(max-width: 820px) 100vw, 50vw" alt="${e(eticheta)}" loading="lazy" style="object-position:${pozitii[pozitie] || pozitii.sus}">`
     : `<figcaption>${e(eticheta)}</figcaption>`) +
@@ -228,7 +228,7 @@ servicii.categorii.forEach((c, i) => {
   <div class="wrap">
     <p class="kicker">Lucrări recente</p>
     <div class="gallery">
-      ${(c.galerie && c.galerie.length ? c.galerie : ['', '', '']).slice(0, 3).map((img, j) => foto('Lucrare recentă', ['alt', 'cool', ''][j], img)).join('\n      ')}
+      ${(c.galerie && c.galerie.length ? c.galerie : ['', '', '']).slice(0, 3).map((img, j) => foto('Lucrare recentă', ['alt', 'cool', ''][j], img, 'centru')).join('\n      ')}
     </div>
   </div>
 </section>
