@@ -40,10 +40,20 @@
       ],
       "foto": "/images/uploads/2392606049021656.jfif",
       "galerie": [
-        "/images/uploads/6122149489277866.jpg",
-        "/images/uploads/211174979727689.jpg",
-        "/images/uploads/6051780745704197.jpg"
-      ]
+        {
+          "imagine": "/images/uploads/6122149489277866.jpg",
+          "pozitie": "centru"
+        },
+        {
+          "imagine": "/images/uploads/211174979727689.jpg",
+          "pozitie": "centru"
+        },
+        {
+          "imagine": "/images/uploads/6051780745704197.jpg",
+          "pozitie": "centru"
+        }
+      ],
+      "foto_pozitie": "sus"
     },
     {
       "slug": "unghii",
@@ -74,9 +84,18 @@
       ],
       "foto": "/images/uploads/23-almond-nails-you’ll-want-to-screenshot-immediately-trust-me-.jpg",
       "galerie": [
-        "/images/uploads/fall-2025-manicure-trends-–-nail-designs-colors-short-nail-ideas.jpg",
-        "/images/uploads/68749989015.jpg",
-        "/images/uploads/elegant-3d-floral-french-nails-🌸✨-_-pink-white-almond-nail-design.jpg"
+        {
+          "imagine": "/images/uploads/fall-2025-manicure-trends-–-nail-designs-colors-short-nail-ideas.jpg",
+          "pozitie": "centru"
+        },
+        {
+          "imagine": "/images/uploads/68749989015.jpg",
+          "pozitie": "centru"
+        },
+        {
+          "imagine": "/images/uploads/elegant-3d-floral-french-nails-🌸✨-_-pink-white-almond-nail-design.jpg",
+          "pozitie": "centru"
+        }
       ],
       "foto_pozitie": "sus"
     },
@@ -109,10 +128,20 @@
       ],
       "foto": "/images/uploads/poza-mv5kv3no.jpg",
       "galerie": [
-        "/images/uploads/96194142039077829-mv5kvgj9.jpg",
-        "/images/uploads/brow-lamination-mv5kvo1z.jpg",
-        "/images/uploads/406872147595652610-mv5kvuam.jpg"
-      ]
+        {
+          "imagine": "/images/uploads/96194142039077829-mv5kvgj9.jpg",
+          "pozitie": "centru"
+        },
+        {
+          "imagine": "/images/uploads/brow-lamination-mv5kvo1z.jpg",
+          "pozitie": "centru"
+        },
+        {
+          "imagine": "/images/uploads/406872147595652610-mv5kvuam.jpg",
+          "pozitie": "centru"
+        }
+      ],
+      "foto_pozitie": "sus"
     }
   ]
 }
