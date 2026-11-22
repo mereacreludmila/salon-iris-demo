@@ -50,7 +50,7 @@ collections:
                 max: 3
                 summary: "Fotografie"
                 fields:
-                  - { label: "Fotografie", name: "imagine", widget: "image" }
+                  - { label: "Fotografie", name: "imagine", widget: "image", required: false }
                   - { label: "Încadrarea fotografiei", name: "pozitie", widget: "select", default: "centru", options: [{ label: "Sus", value: "sus" }, { label: "Centru", value: "centru" }, { label: "Jos", value: "jos" }, { label: "Stânga", value: "stanga" }, { label: "Dreapta", value: "dreapta" }], required: false }
               - label: "Servicii"
                 name: "servicii"
