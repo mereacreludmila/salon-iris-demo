@@ -1,12 +1,22 @@
 {
   "titlu": "Despre noi",
+  "foto": "/images/uploads/benyamin-bohlouli-lgxn4osqsa4-unsplash-mwrsbjz7.jpg",
   "paragrafe": [
     "Am deschis Iris în 2019, cu ideea unui loc unde nu te grăbește nimeni. Lucrăm doar pe programare, ca fiecare client să aibă timpul de care are nevoie.",
     "Folosim produse profesionale și sterilizăm instrumentele după fiecare client. Dacă nu știi exact ce vrei, începem cu o discuție gratuită de cinci minute."
   ],
   "echipa": [
-    { "nume": "Ana Popescu", "rol": "Fondatoare, coloristă" },
-    { "nume": "Maria Ionescu", "rol": "Manichiură și pedichiură" },
-    { "nume": "Elena Dumitru", "rol": "Sprâncene și gene" }
+    {
+      "nume": "Ana Popescu",
+      "rol": "Fondatoare, coloristă"
+    },
+    {
+      "nume": "Maria Ionescu",
+      "rol": "Manichiură și pedichiură"
+    },
+    {
+      "nume": "Elena Dumitru",
+      "rol": "Sprâncene și gene"
+    }
   ]
 }
